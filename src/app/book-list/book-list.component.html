@@ -1,0 +1,22 @@
+<h2>Lista de libros</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Precio</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books" [ngClass]="{'promocion': book.promocion}">
+            <td><img [src]="book.img" alt="book.img"></td>
+            <td>{{book.nombre}}</td>
+            <td>{{book.genero}}</td>
+            <td>{{book.precio | currency}}</td>
+            <td><span *ngIf="book.stock==0" class="badge badge-warning">Sin Stock</span></td>
+            <button class="btn btn-primary">Comprar</button>
+        </tr>
+    </tbody>
+</table>
