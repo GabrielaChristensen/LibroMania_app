@@ -6,22 +6,16 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Contacto</a>
+      <a class="nav-item nav-link active" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" [routerLink]="['/contact']">Contact</a>
       <a class="nav-item nav-link" href="#">Newsletter</a>
     </div>
   </div>
 </nav>
 
 <div class="container">
-  <div class="row">
-    <div class="col-8">
-      <app-book-list></app-book-list>
-    </div>
-    <div class="col4">
-      <app-shopping-cart></app-shopping-cart>
-    </div>
-  </div>
-
+  <router-outlet></router-outlet>
 </div>
+
+
 <footer>Copyright {{title}} - 2022</footer>

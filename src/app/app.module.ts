@@ -4,14 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookListComponent } from './book-list/book-list.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { FormsModule } from '@angular/forms';
+import { LibromaniaContactComponent } from './libromania-contact/libromania-contact.component';
+import { LibromaniaBooksComponent } from './libromania-books/libromania-books.component';
+import { BookReservationComponent } from './book-reservation/book-reservation.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BookListComponent,
-    ShoppingCartComponent
+    LibromaniaContactComponent,
+    LibromaniaBooksComponent,
+    BookReservationComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<h2>Lista de libros</h2>
+<h3>Lista de libros</h3>
 <table class="table text-center">
     <thead>
         <tr>
@@ -17,10 +17,14 @@
             <td>{{book.genero}}</td>
             <td>{{book.precio | currency}}</td>
             <td><span *ngIf="book.stock==0" class="badge badge-warning">Sin Stock</span></td>
-            <td><button class="btn btn-primary btn-sm" (click)="bajarCantidad(book)">-</button>
-                <input type="number" [(ngModel)]="book.cantidad">
-                <button class="btn btn-primary btn-sm" (click)="subirCantidad(book)">+</button>
+            <td>
+                <div class="input-group">
+                    <button class="btn btn-primary btn-sm" (click)="bajarCantidad(book)">-</button>
+                    <input type="number" [(ngModel)]="book.cantidad" class="text-center">
+                    <button class="btn btn-primary btn-sm" (click)="subirCantidad(book)">+</button>
+                </div>
             </td>
+
             <button class="btn btn-primary" (click)="reservarLibro(book)">Reservar</button>
         </tr>
     </tbody>
