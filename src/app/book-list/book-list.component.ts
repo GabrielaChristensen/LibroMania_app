@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from './book';
+import { Book } from './Book';
+
 
 @Component({
   selector: 'app-book-list',
@@ -16,6 +17,7 @@ export class BookListComponent implements OnInit {
       precio: 2000,
       stock: 10,
       promocion: false,
+      cantidad: 0,
     },
     {
       img: "assets/img/caliban.jpg",
@@ -24,6 +26,7 @@ export class BookListComponent implements OnInit {
       precio: 1567,
       stock: 5,
       promocion: true,
+      cantidad: 0,
     },
     {
       img: "assets/img/una habitacion propia.jpg",
@@ -32,6 +35,7 @@ export class BookListComponent implements OnInit {
       precio: 1060,
       stock: 0,
       promocion: false,
+      cantidad: 0,
     },
   ];
 
@@ -40,4 +44,20 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  bajarCantidad(book: Book): void {
+    if (book.cantidad > 0)
+      book.cantidad--;
+  }
+
+  subirCantidad(book: Book): void {
+    if (book.cantidad < book.stock)
+      book.cantidad++;
+  }
+
+
+
+  reservarLibro(book: Book): void {
+    if (book.stock < book.cantidad)
+      window.alert("Stock insuficiente");
+  }
 }

@@ -1,5 +1,5 @@
 <h2>Lista de libros</h2>
-<table class="table">
+<table class="table text-center">
     <thead>
         <tr>
             <th>Imagen</th>
@@ -7,16 +7,21 @@
             <th>Género</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Reserva</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let book of books" [ngClass]="{'promocion': book.promocion}">
-            <td><img [src]="book.img" alt="book.img"></td>
+            <td><img [src]="book.img" alt="book.img" width="100" class="img-thumbnail"></td>
             <td>{{book.nombre}}</td>
             <td>{{book.genero}}</td>
             <td>{{book.precio | currency}}</td>
             <td><span *ngIf="book.stock==0" class="badge badge-warning">Sin Stock</span></td>
-            <button class="btn btn-primary">Comprar</button>
+            <td><button class="btn btn-primary btn-sm" (click)="bajarCantidad(book)">-</button>
+                <input type="number" [(ngModel)]="book.cantidad">
+                <button class="btn btn-primary btn-sm" (click)="subirCantidad(book)">+</button>
+            </td>
+            <button class="btn btn-primary" (click)="reservarLibro(book)">Reservar</button>
         </tr>
     </tbody>
 </table>

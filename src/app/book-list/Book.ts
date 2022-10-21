@@ -5,4 +5,5 @@ export interface Book {
     precio: number;
     stock: number;
     promocion: boolean;
+    cantidad: number;
 }
