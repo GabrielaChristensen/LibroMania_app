@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from './Book';
 
-
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
@@ -44,16 +43,9 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  bajarCantidad(book: Book): void {
-    if (book.cantidad > 0)
-      book.cantidad--;
+  maxReached(m: string) {
+    console.log(m);
   }
-
-  subirCantidad(book: Book): void {
-    if (book.cantidad < book.stock)
-      book.cantidad++;
-  }
-
 
 
   reservarLibro(book: Book): void {

@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { LibromaniaContactComponent } from './libromania-contact/libromania-contact.component';
 import { LibromaniaBooksComponent } from './libromania-books/libromania-books.component';
 import { BookReservationComponent } from './book-reservation/book-reservation.component';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { BookReservationComponent } from './book-reservation/book-reservation.co
     LibromaniaContactComponent,
     LibromaniaBooksComponent,
     BookReservationComponent,
+    InputIntegerComponent,
   ],
   imports: [
     BrowserModule,

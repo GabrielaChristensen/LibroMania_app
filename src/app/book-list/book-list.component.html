@@ -18,11 +18,9 @@
             <td>{{book.precio | currency}}</td>
             <td><span *ngIf="book.stock==0" class="badge badge-warning">Sin Stock</span></td>
             <td>
-                <div class="input-group">
-                    <button class="btn btn-primary btn-sm" (click)="bajarCantidad(book)">-</button>
-                    <input type="number" [(ngModel)]="book.cantidad" class="text-center">
-                    <button class="btn btn-primary btn-sm" (click)="subirCantidad(book)">+</button>
-                </div>
+                <app-input-integer [(cantidad)]="book.cantidad" [max]="book.stock" *ngIf="book.stock"
+                    (maxReached)="maxReached($event)">
+                </app-input-integer>
             </td>
 
             <button class="btn btn-primary" (click)="reservarLibro(book)">Reservar</button>
