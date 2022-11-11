@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookReserveService } from '../book-reserve.service';
 import { Book } from './Book';
 
 @Component({
@@ -38,18 +39,32 @@ export class BookListComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  ;
+
+  constructor(private reserve: BookReserveService) {
+  }
 
   ngOnInit(): void {
   }
+
+  canReserve(book: Book): boolean {
+    return book.cantidad > 0;
+  }
+
+  reserveBook(book: Book): void {
+    this.reserve.reserveBook(book);
+    book.stock -= book.cantidad;
+    book.cantidad = 0;
+  }
+
 
   maxReached(m: string) {
     console.log(m);
   }
 
 
-  reservarLibro(book: Book): void {
-    if (book.stock < book.cantidad)
-      window.alert("Stock insuficiente");
-  }
+  // reservarLibro(book: Book): void {
+  //   if (book.stock < book.cantidad)
+  //     window.alert("Stock insuficiente");
+  // }
 }

@@ -7,7 +7,9 @@
             <th>Género</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Cantidad</th>
             <th>Reserva</th>
+
         </tr>
     </thead>
     <tbody>
@@ -22,8 +24,10 @@
                     (maxReached)="maxReached($event)">
                 </app-input-integer>
             </td>
-
-            <button class="btn btn-primary" (click)="reservarLibro(book)">Reservar</button>
+            <button class="btn btn-primary" (click)="reserveBook(book)" *ngIf="canReserve(book)">Reservar</button>
+            <button class="btn btn-secondary" (click)="reserveBook(book)" *ngIf="!canReserve(book)"
+                disabled>Reservar</button>
+            <td></td>
         </tr>
     </tbody>
 </table>
