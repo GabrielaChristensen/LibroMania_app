@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookDataService } from '../book-data.service';
 import { BookReserveService } from '../book-reserve.service';
 import { Book } from './Book';
 
@@ -9,42 +10,17 @@ import { Book } from './Book';
 })
 export class BookListComponent implements OnInit {
 
-  books: Book[] = [
-    {
-      img: "assets/img/carrie.jpg",
-      nombre: "Carrie",
-      genero: "Terror",
-      precio: 2000,
-      stock: 10,
-      promocion: false,
-      cantidad: 0,
-    },
-    {
-      img: "assets/img/caliban.jpg",
-      nombre: "El calibán y la bruja",
-      genero: "Histórico",
-      precio: 1567,
-      stock: 5,
-      promocion: true,
-      cantidad: 0,
-    },
-    {
-      img: "assets/img/una habitacion propia.jpg",
-      nombre: "Una habitación propia",
-      genero: "Ensayo",
-      precio: 1060,
-      stock: 0,
-      promocion: false,
-      cantidad: 0,
-    },
-  ];
+  books: Book[] = [];
 
-  ;
 
-  constructor(private reserve: BookReserveService) {
+  constructor(
+    private reserve: BookReserveService,
+    private booksDataService: BookDataService) {
   }
 
   ngOnInit(): void {
+    this.booksDataService.getAll()
+      .subscribe(books => this.books = books);
   }
 
   canReserve(book: Book): boolean {
@@ -62,9 +38,4 @@ export class BookListComponent implements OnInit {
     console.log(m);
   }
 
-
-  // reservarLibro(book: Book): void {
-  //   if (book.stock < book.cantidad)
-  //     window.alert("Stock insuficiente");
-  // }
 }

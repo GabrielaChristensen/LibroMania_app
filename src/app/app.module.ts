@@ -9,7 +9,7 @@ import { LibromaniaContactComponent } from './libromania-contact/libromania-cont
 import { LibromaniaBooksComponent } from './libromania-books/libromania-books.component';
 import { BookReservationComponent } from './book-reservation/book-reservation.component';
 import { InputIntegerComponent } from './input-integer/input-integer.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { InputIntegerComponent } from './input-integer/input-integer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
