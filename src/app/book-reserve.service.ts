@@ -21,7 +21,6 @@ export class BookReserveService {
     } else {
       item.cantidad += book.cantidad;
     }
-    console.log(this._reserveList);
     this.reserveList.next(this._reserveList);
   }
 

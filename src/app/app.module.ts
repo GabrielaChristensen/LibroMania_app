@@ -9,7 +9,9 @@ import { LibromaniaContactComponent } from './libromania-contact/libromania-cont
 import { LibromaniaBooksComponent } from './libromania-books/libromania-books.component';
 import { BookReservationComponent } from './book-reservation/book-reservation.component';
 import { InputIntegerComponent } from './input-integer/input-integer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, observable } from 'rxjs';
+
+import { Observable, observable, reduce } from 'rxjs';
 import { Book } from '../book-list/Book';
 import { BookReserveService } from '../book-reserve.service';
 
@@ -20,4 +21,17 @@ export class BookReservationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getTotal(): number {
+    let count = 0;
+
+    this.reserveList$.forEach((books: Book[]) => {
+      books.forEach((book: Book) => {
+        count += (book.precio * book.cantidad);
+      })
+    })
+    return count;
+  }
+
 }
+
+

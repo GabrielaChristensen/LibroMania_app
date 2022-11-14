@@ -19,4 +19,8 @@ export class BookDataService {
         tap((books: Book[]) => books.forEach(book => book.cantidad = 0))
       );
   }
+
+  public updateBook(id: number, book: Book) {
+    return this.http.put(`${URL}/${id}`, book);
+  }
 }

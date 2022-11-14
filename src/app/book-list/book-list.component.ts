@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { BookDataService } from '../book-data.service';
 import { BookReserveService } from '../book-reserve.service';
 import { Book } from './Book';
@@ -15,12 +16,16 @@ export class BookListComponent implements OnInit {
 
   constructor(
     private reserve: BookReserveService,
-    private booksDataService: BookDataService) {
+    private booksDataService: BookDataService,
+    private toast: ToastrService) {
   }
 
   ngOnInit(): void {
+
     this.booksDataService.getAll()
-      .subscribe(books => this.books = books);
+      .subscribe((books: Book[]) => {
+        this.books = books;
+      });
   }
 
   canReserve(book: Book): boolean {
@@ -30,12 +35,15 @@ export class BookListComponent implements OnInit {
   reserveBook(book: Book): void {
     this.reserve.reserveBook(book);
     book.stock -= book.cantidad;
-    book.cantidad = 0;
+    this.booksDataService.updateBook(book.id, book).subscribe(() => {
+      book.cantidad = 0;
+    });
   }
 
-
   maxReached(m: string) {
-    console.log(m);
+    this.toast.info(m, '', {
+      positionClass: 'toast-bottom-right'
+    });
   }
 
 }

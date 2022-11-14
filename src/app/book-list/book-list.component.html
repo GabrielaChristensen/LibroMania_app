@@ -18,7 +18,9 @@
             <td>{{book.nombre}}</td>
             <td>{{book.genero}}</td>
             <td>{{book.precio | currency}}</td>
-            <td><span *ngIf="book.stock==0" class="badge badge-warning">Sin Stock</span></td>
+            <td><span *ngIf="book.stock==0" class="badge badge-warning">Sin Stock</span>
+                <span *ngIf="book.stock>0">{{book.stock}}</span>
+            </td>
             <td>
                 <app-input-integer [(cantidad)]="book.cantidad" [max]="book.stock" *ngIf="book.stock"
                     (maxReached)="maxReached($event)">
